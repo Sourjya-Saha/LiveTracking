@@ -22,6 +22,6 @@
       }
     ],
     "env": {
-      "REACT_APP_API_URL": "https://live-tracking-aoos-git-main-sourjya-sahas-projects.vercel.app"
+      "REACT_APP_API_URL": "https://live-tracking-v8yz.vercel.app"
     }
   }
