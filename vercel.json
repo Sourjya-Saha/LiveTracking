@@ -22,6 +22,6 @@
       }
     ],
     "env": {
-      "REACT_APP_API_URL": "https://live-tracking-anmw.vercel.app/"
+      "REACT_APP_API_URL": "https://live-tracking-anmw.vercel.app"
     }
   }
