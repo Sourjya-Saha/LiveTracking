@@ -8,7 +8,7 @@ const cors = require("cors");
 const server = http.createServer(app);
 const io = socketio(server, {
   cors: {
-    origin: ["https://live-tracking-5iq4.vercel.app"],
+    origin: "https://live-tracking-5iq4.vercel.app",
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
     credentials: true,
