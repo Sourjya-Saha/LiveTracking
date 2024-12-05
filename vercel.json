@@ -1,0 +1,27 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "backend/app.js",
+        "use": "@vercel/node"
+      },
+      {
+        "src": "LiveTracking/package.json",
+        "use": "@vercel/static-build",
+        "config": { "distDir": "build" }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/api/(.*)",
+        "dest": "backend/app.js"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "LiveTracking/build/$1"
+      }
+    ],
+    "env": {
+      "REACT_APP_API_URL": "https://your-backend-url.vercel.app"
+    }
+  }

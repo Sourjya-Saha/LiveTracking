@@ -1,0 +1,167 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .role-selection-container {
+    min-height: 100vh;
+    background-color: #f4f7fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  
+  .role-selection-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .role-buttons-container {
+    display: grid;
+    gap: 1.5rem;
+  }
+  
+  .role-button {
+    width: 100%;
+    padding: 1.5rem;
+    text-align: left;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .role-button:hover {
+    transform: scale(1.03);
+  }
+  
+  .role-button-0 {
+    background-color: #e8f4ff;
+  }
+  
+  .role-button-1 {
+    background-color: #e6ffea;
+  }
+  
+  .role-button-2 {
+    background-color: #f5e8ff;
+  }
+  
+  .role-button-3 {
+    background-color: #fff7e6;
+  }
+  
+  /* Tracking System */
+  .tracking-system-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #f4f7fa;
+  }
+  
+  .header {
+    background-color: white;
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+  }
+  
+  .connected-text {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  
+  .change-role-button {
+    font-size: 0.875rem;
+    color: #e53e3e;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  .map-container {
+    flex: 1;
+    overflow: hidden;
+    padding: 1rem;
+  }
+  
+  /* Responsive Styles */
+  @media screen and (max-width: 768px) {
+    .role-selection-card {
+      padding: 1.5rem;
+    }
+  
+    .title {
+      font-size: 1.5rem;
+    }
+  
+    .role-button {
+      font-size: 0.875rem;
+    }
+  
+    .header-title {
+      font-size: 1.25rem;
+    }
+  
+    .connected-text {
+      font-size: 0.75rem;
+    }
+  
+    .map-container {
+      padding: 0.5rem;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .role-selection-card {
+      padding: 1rem;
+    }
+  
+    .title {
+      font-size: 1.25rem;
+    }
+  
+    .role-button {
+      font-size: 0.75rem;
+      padding: 1rem;
+    }
+  
+    .header-title {
+      font-size: 1rem;
+    }
+  
+    .connected-text {
+      font-size: 0.625rem;
+    }
+  }
+  
