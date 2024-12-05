@@ -1,13 +1,14 @@
+// Backend modifications with routing (server.js)
 const express = require("express");
+const app = express();
 const http = require("http");
 const socketio = require("socket.io");
 const cors = require("cors");
 
-const app = express();
 const server = http.createServer(app);
 const io = socketio(server, {
   cors: {
-    origin: "*", // More flexible for Vercel deployment
+    origin: "http://localhost:5173",
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
     credentials: true,
@@ -23,7 +24,6 @@ const state = {
   deviationHistory: [],
   activeRoutes: new Map()
 };
-
 function calculateDistance(point1, point2) {
   const R = 6371e3; // Earth's radius in meters
   const φ1 = point1.lat * Math.PI/180;
@@ -41,26 +41,22 @@ function calculateDistance(point1, point2) {
 
 app.use(cors());
 
-// Websocket connection handling
 io.on("connection", (socket) => {
   console.log("Client connected:", socket.id);
 
   const role = socket.handshake.query.role;
   state.connectedUsers.set(socket.id, { role, lastUpdate: new Date() });
-
   // Handle user role assignment
   socket.on("user-role", ({ role }) => {
     state.connectedUsers.set(socket.id, { role, lastUpdate: new Date() });
     console.log(`User ${socket.id} registered as ${role}`);
   });
-
   socket.on("route-created", (routeData) => {
     console.log("New route created:", routeData);
     state.currentRoute = routeData;
     state.activeRoutes.set(socket.id, routeData);
     io.emit("route-broadcast", routeData);
   });
-
   // Enhanced driver location handling
   socket.on("driver-location-update", (data) => {
     const userInfo = state.connectedUsers.get(socket.id);
@@ -111,7 +107,6 @@ io.on("connection", (socket) => {
     console.log("Route saved:", routeData);
     state.activeRoutes.set(socket.id, routeData);
   });
-
   socket.on("request-initial-state", () => {
     socket.emit("initial-state", {
       driverLocation: state.driverLocation,
@@ -159,5 +154,7 @@ app.get("/status", (req, res) => {
   });
 });
 
-// Vercel serverless function configuration
-module.exports = app;
+const PORT = 3000;
+server.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
