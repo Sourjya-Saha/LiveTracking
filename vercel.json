@@ -8,7 +8,7 @@
       {
         "src": "LiveTracking/package.json",
         "use": "@vercel/static-build",
-        "config": { "distDir": "build" }
+        "config": { "distDir": "dist" }
       }
     ],
     "routes": [
@@ -18,11 +18,11 @@
       },
       {
         "src": "/(.*)",
-        "dest": "LiveTracking/build/$1"
+        "dest": "LiveTracking/dist/$1"
       }
     ],
     "env": {
       "REACT_APP_API_URL": "https://your-backend-url.vercel.app"
     }
-    
   }
+  
