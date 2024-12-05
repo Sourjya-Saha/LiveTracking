@@ -160,4 +160,4 @@ app.get("/status", (req, res) => {
 });
 
 // Vercel serverless function configuration
-module.exports = server;
+module.exports = app;
