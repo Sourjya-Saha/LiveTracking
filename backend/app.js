@@ -8,7 +8,7 @@ const cors = require("cors");
 const server = http.createServer(app);
 const io = socketio(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: [""],
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
     credentials: true,
