@@ -103,13 +103,13 @@ useEffect(() => {
   console.log('Initializing socket connection and tracking for role:', userRole);
   
   // Initialize socket connection with explicit error handling
-  socketRef.current = io("http://localhost:3000", {
-    reconnection: true,
-    reconnectionAttempts: 5,
-    reconnectionDelay: 1000,
-    query: { role: userRole }
-  });
-
+  socketRef.current = io("https://live-tracking-fresh.vercel.app", {
+  reconnection: true,
+  reconnectionAttempts: 5,
+  reconnectionDelay: 1000,
+  query: { role: userRole },
+  transports: ['websocket', 'polling'] // Add multiple transport methods
+});
   // Enhanced connection handlers
   socketRef.current.on("connect", () => {
     console.log("Connected to socket server with ID:", socketRef.current.id);
