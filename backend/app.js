@@ -1,19 +1,26 @@
 // Backend modifications with routing (server.js)
 const express = require("express");
-const app = express();
 const http = require("http");
 const socketio = require("socket.io");
 const cors = require("cors");
 
+const app = express();
 const server = http.createServer(app);
 const io = socketio(server, {
   cors: {
-    origin: "https://live-tracking-5iq4.vercel.app",
+    origin: [
+      "https://live-tracking-5iq4.vercel.app",
+      "http://localhost:3000" // Add local development origin if needed
+    ],
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
     credentials: true,
   },
 });
+
+// Middleware
+app.use(cors());
+app.use(express.json());
 
 // Enhanced state management
 const state = {
@@ -144,7 +151,7 @@ io.on("connection", (socket) => {
 });
 
 // Add diagnostic endpoint
-app.get("/status", (req, res) => {
+app.get("/api/status", (req, res) => {
   res.json({
     connectedUsers: Array.from(state.connectedUsers.entries()),
     activeRoutes: Array.from(state.activeRoutes.entries()),
@@ -154,7 +161,17 @@ app.get("/status", (req, res) => {
   });
 });
 
-const PORT = 3000;
-server.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+app.get("/", (req, res) => {
+  res.json({ message: "Live Tracking Backend is running" });
 });
+
+// Export for Vercel serverless functions
+module.exports = app;
+
+// Only run the server if not in serverless environment
+if (process.env.NODE_ENV !== 'vercel') {
+  const PORT = process.env.PORT || 3000;
+  server.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+  });
+}
