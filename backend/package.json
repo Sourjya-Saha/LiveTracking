@@ -8,8 +8,13 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
+<<<<<<< HEAD
     "express": "^4.21.2",
     "socket.io": "^4.8.1"
+=======
+    "express": "^4.18.2",
+    "socket.io": "^4.7.2"
+>>>>>>> 5cc646486718fca2e72e83d17f496ce016a5cc98
   },
   "engines": {
     "node": ">=14.0.0"

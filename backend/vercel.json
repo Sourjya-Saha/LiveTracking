@@ -15,4 +15,8 @@
   "env": {
     "NODE_ENV": "vercel"
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 5cc646486718fca2e72e83d17f496ce016a5cc98
