@@ -231,7 +231,4 @@ if (process.env.NODE_ENV !== 'vercel') {
   server.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
   });
-
 }
-
-
